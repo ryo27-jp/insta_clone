@@ -28,6 +28,13 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'jquery-rails'
+gem 'popper_js'
+gem 'sorcery'
+gem 'slim-rails'
+gem 'redis-rails'
+gem 'rails-i18n'
+gem 'annotate'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -47,6 +54,10 @@ group :development do
 
   gem 'rubocop'
   gem 'rubocop-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :test do
