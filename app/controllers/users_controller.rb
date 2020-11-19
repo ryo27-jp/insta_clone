@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      #sorceryで使える様になるメソッド
+      # sorceryで使える様になるメソッド
       redirect_to login_path, success: 'ユーザー登録しました。'
     else
       flash.now[:danger] = '登録に失敗しました。'

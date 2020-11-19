@@ -1,6 +1,5 @@
 class UserSessionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     @user = login(params[:email], params[:password])
@@ -18,4 +17,4 @@ class UserSessionsController < ApplicationController
     logout
     redirect_to root_path, success: 'ログアウトしました'
   end
-end 
+end

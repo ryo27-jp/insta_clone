@@ -24,10 +24,10 @@ module InstaClone
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
 
-    config.generators do |g|  
+    config.generators do |g|
       g.assets false          # CSS, JavaScriptファイル
       g.test_framework false
-      g.helper false 
+      g.helper false
     end
   end
 end
