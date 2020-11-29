@@ -18,4 +18,5 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Post < ApplicationRecord
+  mount_uploader :images, ImagesUploader
 end
