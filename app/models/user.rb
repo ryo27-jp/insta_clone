@@ -22,4 +22,12 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+
+    # 関連づけられたuserが削除されたら紐づいたpostsも削除される.
+  has_many :posts, dependent: :destroy
+
+  # メソッドとして定義しておくとview側での記述がスリムになる
+  def own?(object)
+    id == object.user_id
+  end
 end

@@ -19,4 +19,5 @@
 #
 class Post < ApplicationRecord
   mount_uploader :images, ImagesUploader
+  belogs_to :user
 end
