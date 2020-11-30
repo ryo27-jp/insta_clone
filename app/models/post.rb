@@ -18,6 +18,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Post < ApplicationRecord
-  mount_uploader :images, ImagesUploader
+  # 複数画像を扱う場合はmount_uploadersにしなければいけない。
+  mount_uploaders :images, ImagesUploader
+  serialize :images, JSON
   belongs_to :user
 end
