@@ -37,4 +37,10 @@
   参考:https://github.com/faker-ruby/faker  
 
 ## ポイント  
-
+課題1からずっと詰まってるdatabase.ymlについて  
+.gitignoreでの管理を誤って重要なファイルをgitにあげてしまうと大惨事なので  
+今回の事で少しでも理解を深めておく必要がある。  
+課題2でpushされてしまった原因はおそらく1度gitに上がってしまったファイルだったからだと思われる。  
+参考:https://qiita.com/anqooqie/items/110957797b3d5280c44f  
+githubのコミット履歴から消す方法は今のところ上手くいっていない。  
+参考:https://qiita.com/Spring_MT/items/f60c391b5dbf569a1d12
