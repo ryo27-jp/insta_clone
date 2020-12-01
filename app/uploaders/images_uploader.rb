@@ -2,7 +2,7 @@ class ImagesUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fill: [1000, 1000, "Center"]
+  process resize_to_fill: [1000, 1000, 'Center']
   # 元画像からで切り抜きを行い、第三引数で切り抜きを行う際の中心点を指定
   # 縦横比が維持されない
 

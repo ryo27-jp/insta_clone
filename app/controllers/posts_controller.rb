@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, only: [:new, :create, :show, :edit, :update]
+  before_action :require_login, only: %i[new create show edit update]
   # sorceryでメソッドとして切り出されている
 
   def index
@@ -14,9 +14,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new(post_params)
     if @post.save
-      redirect_to posts_path, notice: "投稿しました。"
+      redirect_to posts_path, notice: '投稿しました。'
     else
-      flash.now[:danger] = "投稿に失敗しました。"
+      flash.now[:danger] = '投稿に失敗しました。'
       render :new
     end
   end
@@ -32,9 +32,9 @@ class PostsController < ApplicationController
   def update
     @post = current_user.posts.find(params[:id])
     if @post.update(post_params)
-      redirect_to post_path, success: "投稿を更新しました。"
+      redirect_to post_path, success: '投稿を更新しました。'
     else
-      flash.now[:danger] = "投稿の更新に失敗しました。"
+      flash.now[:danger] = '投稿の更新に失敗しました。'
       render :edit
     end
   end
@@ -42,13 +42,13 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy!
-    redirect_to post_path, success: "投稿を削除しました。"
+    redirect_to post_path, success: '投稿を削除しました。'
   end
 
-    private
+  private
 
-      def post_params
-        # 複数枚の画像を投稿した場合に配列で受け取る為
-        params.require(:post).permit(:body, images: [])
-      end
+  def post_params
+    # 複数枚の画像を投稿した場合に配列で受け取る為
+    params.require(:post).permit(:body, images: [])
+  end
 end

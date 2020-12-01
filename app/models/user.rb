@@ -23,7 +23,7 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
-    # 関連づけられたuserが削除されたら紐づいたpostsも削除される.
+  # 関連づけられたuserが削除されたら紐づいたpostsも削除される.
   has_many :posts, dependent: :destroy
 
   # メソッドとして定義しておくとview側での記述がスリムになる
