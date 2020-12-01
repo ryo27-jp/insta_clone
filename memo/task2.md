@@ -44,3 +44,4 @@
 参考:https://qiita.com/anqooqie/items/110957797b3d5280c44f  
 githubのコミット履歴から消す方法は今のところ上手くいっていない。  
 参考:https://qiita.com/Spring_MT/items/f60c391b5dbf569a1d12
+ブランチ切って序盤に油断して一括でgit add してしまった気がするので反省！
