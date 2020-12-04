@@ -3,6 +3,8 @@
     .col-md-8.col-12
       / colectionオプションを省略した書き方 = render partial:post,colection:@posts
       = render @posts
+      / ページネーションのテンプレートへrenderするメソッド
+      = paginate @posts
     .col-md-4.col-12
       - if logged_in?
         .profile-box.mb-3
