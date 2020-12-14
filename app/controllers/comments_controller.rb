@@ -20,12 +20,12 @@ class CommentsController < ApplicationController
 
   private
 
-    def comment_params
-      # mergeメソッドでルーティングでネストされているpost_idを結合している。
-      params.require(:comment).permit(:body).merge(post_id: params[:post_id])
-    end
-    
-    def comment_update_params
-      params.require(:comment).permit(:body)
-    end
+  def comment_params
+    # mergeメソッドでルーティングでネストされているpost_idを結合している。
+    params.require(:comment).permit(:body).merge(post_id: params[:post_id])
+  end
+
+  def comment_update_params
+    params.require(:comment).permit(:body)
+  end
 end
