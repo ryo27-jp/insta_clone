@@ -1,0 +1,5 @@
+/ .html()で#modal-containerの中身をmodal_formに置き換えてる。
+/ escape_javascriptは''や""をエスケープするメソッド？
+| $("#modal-container").html("#{escape_javascript(render 'modal_form', comment: @comment)}");
+/ モーダル・ダイアログを開く。
+| $("#comment-edit-modal").modal('show');
