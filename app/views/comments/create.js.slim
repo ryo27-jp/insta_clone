@@ -1,7 +1,7 @@
 - if @comment.errors.present?
   | alert("#{@comment.errors.full_messages.join('\n')}");
 - else
-  / .comments-boxの先頭にcomment.htmlを挿入している。
+  / .comments-boxの中身の先頭に_comment.html.slimを挿入している。
   | $('.comments-box').prepend("#{j render('comments/comment', comment: @comment)}");
   / これがないとcomment作成後にvalueが残ったままになる。
   | $('.input-comment-body').val('');
