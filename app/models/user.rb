@@ -26,6 +26,8 @@ class User < ApplicationRecord
   # 関連づけられたuserが削除されたら紐づいたpostsも削除される.
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :like_posts, through: :likes, source: :post
 
   # メソッドとして定義しておくとview側での記述がスリムになる
   def own?(object)
