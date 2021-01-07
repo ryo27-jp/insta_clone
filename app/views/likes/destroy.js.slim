@@ -1,1 +1,2 @@
 | $("#like_area-#{@post.id}").html("#{j render('posts/like', post: @post)}");
+/ @post.id でlikeされているpostのidを渡すはずがpost_id（この場合nil)を渡していたのでlikeだけ行われてlike_areaは更新されなかった。
