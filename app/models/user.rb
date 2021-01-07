@@ -33,6 +33,7 @@ class User < ApplicationRecord
   def own?(object)
     id == object.user_id
   end
+
   # postをlike_postsで取得した配列に格納する
   def like(post)
     like_posts << post
@@ -41,6 +42,7 @@ class User < ApplicationRecord
   def unlike(post)
     like_posts.delete(post)
   end
+
   # like_postsで取得した配列とpostが == で等しい要素を持つ時にtrueを返す。
   def like?(post)
     like_posts.include?(post)
