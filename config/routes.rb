@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :likes, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
-  resources :users, only: %i[new create]
+  resources :users, only: %i[index show new create]
   resources :posts do
     # コレクションだけを親のスコープの下で生成。メンバーはネストに含めない。
     resources :comments, shallow: true

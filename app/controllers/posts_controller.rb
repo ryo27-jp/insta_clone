@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     # params[:page]がページ番号を受け取っている
     @posts = Post.includes(:user).page(params[:page]).order(created_at: :desc)
     # N+1問題を解消する為にincludesを使う(今回の場合.allより SQL発行数を減らす事ができる)
+    @random_users = User.randoms(5)
   end
 
   def new
