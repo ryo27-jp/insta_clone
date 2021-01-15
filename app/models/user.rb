@@ -36,8 +36,9 @@ class User < ApplicationRecord
   has_many :followers, through: :followed, source: :follower # 自分をフォローしている人
   # メソッドとして定義しておくとview側での記述がスリムになる
 
-  # order("RAND()")でランダムにカラムを取得する事ができる。引数で受け取った件数分
-  scope :randoms, -> (count) { order("RAND()").limit(count) }
+  # order("RAND()")でランダムにカラムを取得する事ができる。引数で受け取った件数分。RAND関数は推奨されていない。
+
+  scope :recent, ->(count) { order(created_at: :desc).limit(count) }
   
   def own?(object)
     id == object.user_id
@@ -67,5 +68,10 @@ class User < ApplicationRecord
 
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  # フォローしている人following_idsのポストを取得
+  def feed
+    Post.where(user_id: following_ids << id)
   end
 end

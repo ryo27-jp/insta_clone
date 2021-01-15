@@ -2,7 +2,12 @@
   .row
     .col-md-8.col-12
       / colectionオプションを省略した書き方 = render partial:post,colection:@posts
-      = render @posts
+     
+      - if @posts.present?
+        = render @posts
+      - else
+        .text-center.font-weight-bold
+          | 投稿がありません
       / ページネーションのテンプレートへrenderするメソッド
       = paginate @posts
     .col-md-4.col-12
