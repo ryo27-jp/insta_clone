@@ -5,12 +5,12 @@ class PostsController < ApplicationController
   def index
     # params[:page]がページ番号を受け取っている
     @posts = if current_user
-       # N+1問題を解消する為にincludesを使う(今回の場合.allより SQL発行数を減らす事ができる)
-      current_user.feed.includes(:user).page(params[:page])
-    else
-      Post.all.includes(:user).page(params[:page])
-    end
-   
+               # N+1問題を解消する為にincludesを使う(今回の場合.allより SQL発行数を減らす事ができる)
+               current_user.feed.includes(:user).page(params[:page])
+             else
+               Post.all.includes(:user).page(params[:page])
+             end
+
     @users = User.recent(5)
   end
 

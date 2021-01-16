@@ -29,9 +29,9 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
   # class_nameオプションで参照テーブルを指定、foreign_keyで参照カラム指定
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy #フォローしている人
-  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy #フォローされている人
-  # 
+  has_many :follower, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy # フォローしている人
+  has_many :followed, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy # フォローされている人
+  #
   has_many :following, through: :follower, source: :followed # 自分がフォローしている人
   has_many :followers, through: :followed, source: :follower # 自分をフォローしている人
   # メソッドとして定義しておくとview側での記述がスリムになる
@@ -39,7 +39,7 @@ class User < ApplicationRecord
   # order("RAND()")でランダムにカラムを取得する事ができる。引数で受け取った件数分。RAND関数は推奨されていない。
 
   scope :recent, ->(count) { order(created_at: :desc).limit(count) }
-  
+
   def own?(object)
     id == object.user_id
   end
@@ -57,6 +57,7 @@ class User < ApplicationRecord
   def like?(post)
     like_posts.include?(post)
   end
+
   # フォロー機能
   def follow(other_user)
     follower.create(followed_id: other_user.id)
