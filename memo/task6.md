@@ -7,10 +7,10 @@ relationshipsテーブルは中間テーブルだが、保存する外部キー�
 - 関連付け  
 https://hajimeteblog.com/rails-follow/  
 ```
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy #フォローしている人
-  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy #フォローされている人
-  has_many :following, through: :follower, source: :followed # 自分がフォローしている人
-  has_many :followers, through: :followed, source: :follower 
+  has_many :active_relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy #フォローしている人
+  has_many :passive_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy #フォローされている人
+  has_many :following, through: :active_relationships, source: :followed # 自分がフォローしている人
+  has_many :followers, through: :passive_relationships, source: :follower 
   ```
 
 関連付けしているモデルも実際にあるモデルではない為sorceオプションで関連モデルをforeign_keyで参照カラムを明示的に指定する
