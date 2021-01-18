@@ -4,8 +4,14 @@ class PostsController < ApplicationController
 
   def index
     # params[:page]がページ番号を受け取っている
-    @posts = Post.includes(:user).page(params[:page]).order(created_at: :desc)
-    # N+1問題を解消する為にincludesを使う(今回の場合.allより SQL発行数を減らす事ができる)
+    @posts = if current_user
+               # N+1問題を解消する為にincludesを使う(今回の場合.allより SQL発行数を減らす事ができる)
+               current_user.feed.includes(:user).page(params[:page])
+             else
+               Post.all.includes(:user).page(params[:page])
+             end
+
+    @users = User.recent(5)
   end
 
   def new
@@ -46,7 +52,7 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
     @post.destroy!
-    redirect_to post_path, success: '投稿を削除しました。'
+    redirect_to posts_path, success: '投稿を削除しました。'
   end
 
   private

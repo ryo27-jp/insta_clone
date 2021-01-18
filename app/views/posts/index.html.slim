@@ -2,7 +2,12 @@
   .row
     .col-md-8.col-12
       / colectionオプションを省略した書き方 = render partial:post,colection:@posts
-      = render @posts
+     
+      - if @posts.present?
+        = render @posts
+      - else
+        .text-center.font-weight-bold
+          | 投稿がありません
       / ページネーションのテンプレートへrenderするメソッド
       = paginate @posts
     .col-md-4.col-12
@@ -15,17 +20,6 @@
           .card-header
             | ユーザー
           .card-body
-            .user.mb-3
-              = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミー京介
-            .user.mb-3
-              = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミー寅泰
-            .user.mb-3
-              = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミー常松
-            .user.mb-3
-              = image_tag 'profile-placeholder.png', size: '40x40', class: 'rounded-circle mr-1'
-              | ダミーまこと
+            = render @users
           .card-footer
-            = link_to 'すべて見る', '#'
+            = link_to 'すべて見る', users_path
