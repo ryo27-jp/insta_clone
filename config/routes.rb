@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :posts do
     # コレクションだけを親のスコープの下で生成。メンバーはネストに含めない。
     resources :comments, shallow: true
+    get :search, on: :collection
   end
   # コレクション(index/new/createのような、idを持たないアクション)
   # メンバー(show/edit/update/destroyのような、idを必要とするアクション)
