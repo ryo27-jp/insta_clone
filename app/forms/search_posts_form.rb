@@ -15,6 +15,7 @@ class SearchPostsForm
   end
 
   private
+
   # 頭の半角空白文字を取り除き文字列が空白で区切られていた場合配列にして返す
   def splited_bodies
     body.strip.split(/[[:blank:]]+/)

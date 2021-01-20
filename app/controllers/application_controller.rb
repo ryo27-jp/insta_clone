@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   def set_search_posts_form
     @search_form = SearchPostsForm.new(search_post_params)
   end
+
   # 第一引数のkeyが空だった場合エラーではなく第２引数defaultを返す。
   def search_post_params
     params.fetch(:q, {}).permit(:body, :comment_body, :username)
