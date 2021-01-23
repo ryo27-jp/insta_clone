@@ -28,4 +28,8 @@ class Post < ApplicationRecord
   has_many :like_users, through: :likes, source: :user
 
   validates :body, presence: true, length: { maximum: 280 }
+  # LIKE句を使って引数の文字列が含まれるレコードを取得する。
+  scope :body_contain, ->(word) { where('body LIKE ?', "%#{word}%") }
+  scope :comment_body_contain, ->(word) { joins(:comments).where('comments.body LIKE ?', "%#{word}%") }
+  scope :username_contain, ->(word) { joins(:user).where('username LIKE ?', "%#{word}%") }
 end
