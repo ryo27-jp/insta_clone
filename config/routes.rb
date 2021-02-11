@@ -10,11 +10,14 @@ Rails.application.routes.draw do
     # コレクションルーティング
     get :search, on: :collection
   end
+<<<<<<< HEAD
 
   namespace :mypage do
     # 今回は１つのリソース（idを用いない)しか扱わない想定なので単数系
     resource :account
   end
+=======
+>>>>>>> parent of 3d32460... mypageルーティング
   # コレクション(index/new/createのような、idを持たないアクション)
   # メンバー(show/edit/update/destroyのような、idを必要とするアクション)
   get 'login', to: 'user_sessions#new'
