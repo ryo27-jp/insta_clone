@@ -20,3 +20,4 @@ class Mypage::AccountsController < Mypage::BaseController
     params.require(:user).permit(:email, :username, :avatar, :avatar_cache)
   end
 end
+
