@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   namespace :mypage do
-    # 今回は１つのリソースしか扱わない想定なので単数系（idを用いない)
+    # 今回は１つのリソース（idを用いない)しか扱わない想定なので単数系
     resource :account
   end
   # コレクション(index/new/createのような、idを持たないアクション)
