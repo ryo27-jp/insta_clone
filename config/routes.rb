@@ -10,11 +10,6 @@ Rails.application.routes.draw do
     # コレクションルーティング
     get :search, on: :collection
   end
-
-  namespace :mypage do
-    # 今回は１つのリソースしか扱わない想定なので単数系（idを用いない)
-    resource :account
-  end
   # コレクション(index/new/createのような、idを持たないアクション)
   # メンバー(show/edit/update/destroyのような、idを必要とするアクション)
   get 'login', to: 'user_sessions#new'
