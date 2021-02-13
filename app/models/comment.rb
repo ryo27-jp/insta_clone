@@ -24,4 +24,12 @@ class Comment < ApplicationRecord
   belongs_to :post
 
   validates :body, presence: true, length: { maximum: 280 }
+
+  after_create_commit :create_activities
+
+  private
+
+  def create_activities
+    Activity.create(subject: self, user: post.user, action_type: :commented_to_own_post)
+  end
 end

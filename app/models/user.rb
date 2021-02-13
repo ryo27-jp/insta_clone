@@ -37,7 +37,7 @@ class User < ApplicationRecord
   #
   has_many :following, through: :active_relationships, source: :followed # 自分がフォローしている人
   has_many :followers, through: :passive_relationships, source: :follower # 自分をフォローしている人
-  # メソッドとして定義しておくとview側での記述がスリムになる
+  has_many :activities, dependent: :destroy
 
   # order("RAND()")でランダムにカラムを取得する事ができる。引数で受け取った件数分。RAND関数は推奨されていない。
 

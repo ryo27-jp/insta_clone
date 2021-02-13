@@ -13,9 +13,12 @@
 ActiveRecord::Schema.define(version: 2021_02_13_020824) do
 
   create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    # 関連のモデル名を保存(コメントされたら"Comment"等)
     t.string "subject_type"
+    # 関連モデルのidを保存(idが5のレコードなら5が保存される)
     t.bigint "subject_id"
     t.bigint "user_id"
+    # Activityモデルのenumで定義されてるタイプがcreateされたモデルのafter_create_commitによってintで入る）
     t.integer "action_type", null: false
     t.boolean "read", default: false, null: false
     t.datetime "created_at", null: false
