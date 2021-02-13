@@ -1,0 +1,7 @@
+- if current_user.activities.present?
+  - current_user.activities.each do |activity|
+    / action_typeカラムに保存されたレコードでパーシャルを選択する
+    = render "shared/#{activity.action_type}", activity: activity
+- else
+  .dropdown-item
+    | お知らせはありません
