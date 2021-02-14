@@ -60,4 +60,8 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.session_store :redis_store, servers: 'redis://localhost:6379', expire_after: 1.day
+  # デフォルトで使用するURLのホスト名を指定する。この場合はgem configで定数化した値を使用する。
+  config.action_mailer.default_url_options = Settings.default_url_options.to_h
+  # ActionMailerの配信方法をletter_opener_webに設定
+  config.action_mailer.delivery_method = :letter_opener_web
 end
