@@ -23,3 +23,4 @@
  layoutはRailsは現在のレイアウトを探索する場合、最初に現在のコントローラと同じ基本名を持つレイアウトがapp/views/layoutsディレクトリにあるかどうかを調べます。たとえば、PhotosControllerクラスのアクションから出力するのであれば、app/views/layouts/photos.html.erbまたはapp/views/layouts/photos.builderを探します。該当のコントローラに属するレイアウトがない場合、app/views/layouts/application.html.erbという順番になる。　　
  　　
  今回の場合はBaseコントローラーでLayoutを指定していたがそれを失念していて継承漏れに気づくのに時間を要した。　　
+ https://railsguides.jp/layouts_and_rendering.html
