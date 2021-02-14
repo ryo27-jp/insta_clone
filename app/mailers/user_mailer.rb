@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-
   def like_post
     # controllerのparamsと同じ様に使っている。コントローラーのwithで渡されるキーの値を受け取る。
     # アクションした人
