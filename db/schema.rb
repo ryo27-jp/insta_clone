@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_11_132911) do
+ActiveRecord::Schema.define(version: 2021_02_13_020824) do
+
+  create_table "activities", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    # 関連のモデル名を保存(コメントされたら"Comment"等)
+    t.string "subject_type"
+    # 関連モデルのidを保存(idが5のレコードなら5が保存される)
+    t.bigint "subject_id"
+    t.bigint "user_id"
+    # Activityモデルのenumで定義されてるタイプがcreateされたモデルのafter_create_commitによってintで入る）
+    t.integer "action_type", null: false
+    t.boolean "read", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["subject_type", "subject_id"], name: "index_activities_on_subject_type_and_subject_id"
+    t.index ["user_id"], name: "index_activities_on_user_id"
+  end
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -62,6 +77,7 @@ ActiveRecord::Schema.define(version: 2021_02_11_132911) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "activities", "users"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "likes", "posts"

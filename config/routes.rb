@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :likes, only: %i[create destroy]
   resources :relationships, only: %i[create destroy]
+  resources :activities, only: [] do
+    patch :read, on: :member
+  end
   resources :users, only: %i[index show new create]
   resources :posts do
     # コレクションだけを親のスコープの下で生成。メンバーはネストに含めない。
@@ -15,7 +18,8 @@ Rails.application.routes.draw do
 
   namespace :mypage do
     # 今回は１つのリソースしか扱わない想定なので単数系（idを用いない)
-    resource :account
+    resource :account, only: %i[edit update]
+    resources :activities, only: %i[index]
   end
 
   get 'login', to: 'user_sessions#new'
