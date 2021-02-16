@@ -2,7 +2,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  mount Sidekiq::Web, at: "/sidekiq"
+  mount Sidekiq::Web, at: '/sidekiq'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   root 'posts#index'
 
