@@ -1,0 +1,8 @@
+# sidekiqプロセスで使用するスレッドの数。ジョブの同時実行数
+:concurrency: 25
+# キュー/基本はデフォルトのみ、この場合優先順位は上から
+:queues:
+  - default
+  - mailers
+
+  

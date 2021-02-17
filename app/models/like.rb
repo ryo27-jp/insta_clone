@@ -24,7 +24,6 @@ class Like < ApplicationRecord
   belongs_to :post
   # post_id(post)の中でuse_id(user)はlikeを一度だけ出来る。配列も行ける
   validates :user_id, uniqueness: { scope: :post_id }
-
   after_create_commit :create_activities
 
   def create_activities
