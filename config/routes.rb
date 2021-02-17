@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     # 今回は１つのリソースしか扱わない想定なので単数系（idを用いない)
     resource :account, only: %i[edit update]
     resources :activities, only: %i[index]
+    resource :notification_setting, only: %i[edit, update]
   end
 
   get 'login', to: 'user_sessions#new'
