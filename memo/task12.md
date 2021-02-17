@@ -47,6 +47,12 @@ redis-server
 bundle exec sidekiq -C config/sidekiq.yml
 ```
 # 管理画面はアクセスするとセッションが切れます
+この設定をしておくとセッションを維持したままアクセスする事ができる
+```
+require 'sidekiq/web'
+Sidekiq::Web.set :sessions, false
+```
+https://qiita.com/ts-3156/items/2959c79c79bd9979ef97#%E3%82%BB%E3%83%83%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%8C%E5%A4%B1%E3%82%8F%E3%82%8C%E3%82%8B%E5%95%8F%E9%A1%8C
 ``http://localhost:3000/sidekiq``
 
 流れ
