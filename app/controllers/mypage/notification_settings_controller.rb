@@ -5,7 +5,7 @@ class Mypage::NotificationSettingsController < Mypage::BaseController
   end
 
   def update
-    @user = User.find(current_user)
+    @user = User.find(current_user.id)
     if @user.update(notification_settings_params)
       redirect_to edit_mypage_notification_setting_path, success: '設定を更新しました'
     else
@@ -17,6 +17,6 @@ class Mypage::NotificationSettingsController < Mypage::BaseController
   private
 
   def notification_settings_params
-    params.require(:user).permita(:notification_on_comment, :notification_on_like, :notification_on_follow)
+    params.require(:user).permit(:notification_on_comment, :notification_on_like, :notification_on_follow)
   end
 end
