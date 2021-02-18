@@ -10,6 +10,9 @@ ja:
         password_confirmation: 'パスワード確認'
         username: 'ユーザー名'
         avatar: 'アバター'
+        notification_on_follow: 'フォローされた時の通知メール'
+        notification_on_like: 'いいねされた時の通知メール'
+        notification_on_comment: 'コメントされた時の通知メール'
       post:
         images: '画像'
         body: '本文'
