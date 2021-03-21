@@ -27,6 +27,8 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
 
+  has_one :activity, as: :subject, dependent: :destroy
+
   validates :body, presence: true, length: { maximum: 280 }
   # LIKE句を使って引数の文字列が含まれるレコードを取得する。
   scope :body_contain, ->(word) { where('body LIKE ?', "%#{word}%") }
